@@ -21,9 +21,10 @@ training_set = subset(dataset, split == TRUE)
 test_set = subset(dataset, split == FALSE)
 
 # Fitting XGBoost to the Training set
-# install.packages('xgboost')
+install.packages('xgboost')
 library(xgboost)
-classifier = xgboost(data = as.matrix(training_set[-11]), label = training_set$Exited, nrounds = 10)
+classifier = xgboost(data = as.matrix(training_set[-11]), 
+                     label = training_set$Exited, nrounds = 10)
 
 # Predicting the Test set results
 y_pred = predict(classifier, newdata = as.matrix(test_set[-11]))
